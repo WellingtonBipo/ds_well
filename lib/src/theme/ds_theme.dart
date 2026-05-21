@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:ds_well/src/theme/ds_color_grades.dart';
 import 'package:ds_well/src/theme/components/ds_components.dart';
 import 'package:flutter/foundation.dart';
@@ -10,19 +9,13 @@ import 'package:utils_well/utils_well.dart';
 
 part 'ds_theme_widget.dart';
 
-class DsTheme {
-  const DsTheme({
-    Color? brand1,
-    this.brand2,
-    this.background,
-    this.components,
-  }) : brand1 = brand1 ?? brand1K;
-
-  final Color brand1;
-  final Color? brand2;
-
-  final ColorGrades? background;
-  final DsThemeComponents? components;
+class DsTheme({
+  Color? brand1,
+  final Color? brand2,
+  final ColorGrades? background,
+  final DsThemeComponents? components,
+}) {
+  final Color brand1 = brand1 ?? brand1K;
 
   static const brand1K = Color.fromARGB(255, 0, 87, 157);
 
@@ -56,28 +49,24 @@ class DsTheme {
   }
 }
 
-class DsThemeEffective {
-  DsThemeEffective({
-    this.brightness = .light,
-    this.isSystemMode = false,
-    this.brand1 = DsTheme.brand1K,
-    this.brand2,
-    ColorGradesEffective? background,
-    DsThemeComponentsEffective? components,
-  }) {
-    final configs = (brightness: brightness, brand1: brand1, brand2: brand2);
-    this.background = background ?? DsThemeEffective.backgroundK[brightness]!;
-    this.components =
-        components ?? DsThemeComponentsEffective.defaults(configs);
-  }
+class DsThemeEffective({
+  final Brightness brightness = .light,
+  final bool isSystemMode = false,
+  final Color brand1 = DsTheme.brand1K,
+  final Color? brand2,
+  ColorGradesEffective? background,
+  DsThemeComponentsEffective? components,
+}) {
+  final ColorGradesEffective background =
+      background ?? DsThemeEffective.backgroundK[brightness]!;
 
-  final Brightness brightness;
-  final bool isSystemMode;
-
-  final Color brand1;
-  final Color? brand2;
-  late final ColorGradesEffective background;
-  late final DsThemeComponentsEffective components;
+  final DsThemeComponentsEffective components =
+      components ??
+      DsThemeComponentsEffective.defaults((
+        brightness: brightness,
+        brand1: brand1,
+        brand2: brand2,
+      ));
 
   static final backgroundK = {
     Brightness.light: ColorGradesEffective(
@@ -112,36 +101,13 @@ class DsThemeEffective {
     background: background.mergeWith(brightness, other?.background),
     components: components.mergeWith(brightness, other?.components),
   );
-
-  // static DsThemeEffective merge(
-  //   Brightness brightness,
-  //   bool isSystemMode,
-  //   DsTheme? theme,
-  //   DsTheme? theme2,
-  // ) {
-  //   return DsThemeEffective(
-  //     brightness: brightness,
-  //     isSystemMode: isSystemMode,
-  //     background: kBackground[brightness]!
-  //         .mergeWith(brightness, theme?.background)
-  //         .mergeWith(brightness, theme2?.background),
-  //     components: DsThemeComponentsEffective.defaults[brightness]!
-  //         .mergeWith(brightness, theme?.components)
-  //         .mergeWith(brightness, theme2?.components),
-  //   );
-  // }
 }
 
-class DsThemeColors {
-  const DsThemeColors({
-    this.light,
-    this.dark,
-  });
-
-  const DsThemeColors.all(this.light) : dark = light;
-
-  final Color? light;
-  final Color? dark;
+class const DsThemeColors({
+  final Color? light,
+  final Color? dark,
+}) {
+  const new all(Color? light) : this(light: light, dark: light);
 }
 
 extension DsThemeColorsExt on DsThemeColors? {
@@ -153,14 +119,7 @@ extension DsThemeColorsExt on DsThemeColors? {
   };
 }
 
-enum DsThemeMode {
-  system,
-  light,
-  dark
-  ;
-
-  bool get isSystem => this == .system;
-}
+enum DsThemeMode { system, light, dark }
 
 extension DsThemeModeExt on DsThemeMode? {
   bool get isSystem => this == .system;

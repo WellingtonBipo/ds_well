@@ -2,26 +2,17 @@ import 'package:ds_well/src/components/text/ds_text_style.dart';
 import 'package:ds_well/src/theme/ds_color_grades.dart';
 import 'package:flutter/widgets.dart';
 
-class DsTextTheme {
-  const DsTextTheme({this.style, this.grades});
+class const DsTextTheme({
+  final DsTextStyle? style,
+  final ColorGrades? grades,
+});
 
-  final DsTextStyle? style;
-  final ColorGrades? grades;
-}
-
-class DsTextThemeEffective extends DsTextTheme {
-  DsTextThemeEffective({
-    DsTextStyle super.style = DsTextStyle.body,
-    ColorGradesEffective? grades,
-  }) : super(
-         grades: grades ?? defaults[Brightness.light]!.grades,
-       );
-
-  @override
-  DsTextStyle get style => super.style!;
-
-  @override
-  ColorGradesEffective get grades => super.grades as ColorGradesEffective;
+class DsTextThemeEffective({
+  final DsTextStyle style = DsTextStyle.body,
+  ColorGradesEffective? grades,
+}) {
+  final ColorGradesEffective grades =
+      grades ?? defaults[Brightness.light]!.grades;
 
   static final defaults = {
     Brightness.light: DsTextThemeEffective(

@@ -1,61 +1,39 @@
 import 'package:ds_well/src/utils/color_extension.dart';
 import 'package:flutter/widgets.dart';
 
-class DsButtonTheme {
-  const DsButtonTheme({
-    this.text,
-    this.textDisabled,
-    this.textDanger,
-    this.textDangerDisabled,
-    this.filledText,
-    this.filled,
-    this.filledDisabled,
-    this.filledDanger,
-    this.filledDangerDisabled,
-    this.outlined,
-    this.outlinedDisabled,
-    this.outlinedDanger,
-    this.outlinedDangerDisabled,
-    this.loading,
-  });
+class const DsButtonTheme({
+  final Color? text,
+  final Color? textDisabled,
+  final Color? textDanger,
+  final Color? textDangerDisabled,
+  final Color? filledText,
+  final Color? filled,
+  final Color? filledDisabled,
+  final Color? filledDanger,
+  final Color? filledDangerDisabled,
+  final Color? outlined,
+  final Color? outlinedDisabled,
+  final Color? outlinedDanger,
+  final Color? outlinedDangerDisabled,
+  final Color? loading,
+});
 
-  final Color? text;
-  final Color? textDisabled;
-  final Color? textDanger;
-  final Color? textDangerDisabled;
-
-  final Color? filledText;
-  final Color? filled;
-  final Color? filledDisabled;
-  final Color? filledDanger;
-  final Color? filledDangerDisabled;
-
-  final Color? outlined;
-  final Color? outlinedDisabled;
-  final Color? outlinedDanger;
-  final Color? outlinedDangerDisabled;
-
-  final Color? loading;
-}
-
-class DsButtonThemeEffective {
-  DsButtonThemeEffective({
-    required this.text,
-    required this.textDisabled,
-    required this.textDanger,
-    required this.textDangerDisabled,
-    required this.filledText,
-    required this.filled,
-    required this.filledDisabled,
-    required this.filledDanger,
-    required this.filledDangerDisabled,
-    required this.outlined,
-    required this.outlinedDisabled,
-    required this.outlinedDanger,
-    required this.outlinedDangerDisabled,
-    required this.loading,
-  }) : super();
-
+class const DsButtonThemeEffective({
+  required final Color text,
+  required final Color textDisabled,
+  required final Color textDanger,
+  required final Color textDangerDisabled,
+  required final Color filledText,
+  required final Color filled,
+  required final Color filledDisabled,
+  required final Color filledDanger,
+  required final Color filledDangerDisabled,
+  required final Color outlined,
+  required final Color outlinedDisabled,
+  required final Color outlinedDanger,
+  required final Color outlinedDangerDisabled,
+  required final Color loading,
+}) {
   static DsButtonThemeEffective defaults(
     ({Color brand1, Color? brand2, Brightness brightness}) configs,
   ) {
@@ -102,24 +80,6 @@ class DsButtonThemeEffective {
       loading: brand,
     );
   }
-
-  final Color text;
-  final Color textDisabled;
-  final Color textDanger;
-  final Color textDangerDisabled;
-
-  final Color filledText;
-  final Color filled;
-  final Color filledDisabled;
-  final Color filledDanger;
-  final Color filledDangerDisabled;
-
-  final Color outlined;
-  final Color outlinedDisabled;
-  final Color outlinedDanger;
-  final Color outlinedDangerDisabled;
-
-  final Color loading;
 
   DsButtonThemeEffective mergeWith(
     Brightness brightness,

@@ -1,19 +1,12 @@
 part of 'ds_theme.dart';
 
-class DsThemeWidget extends StatefulWidget {
-  const DsThemeWidget({
-    this.theme,
-    this.mode,
-    this.builder,
-    this.child,
-    super.key,
-  });
-
-  final DsTheme? theme;
-  final DsThemeMode? mode;
-  final Widget Function(BuildContext context)? builder;
-  final Widget? child;
-
+class const DsThemeWidget({
+  final DsTheme? theme,
+  final DsThemeMode? mode,
+  final Widget Function(BuildContext context)? builder,
+  final Widget? child,
+  super.key,
+}) extends StatefulWidget {
   @override
   State<DsThemeWidget> createState() => DsThemeWidgetState();
 }
@@ -104,13 +97,10 @@ class DsThemeWidgetState extends State<DsThemeWidget> {
   }
 }
 
-class _InheritedNotifier
-    extends InheritedNotifier<ValueNotifier<(Brightness, DsThemeMode)>> {
-  const _InheritedNotifier({
-    required ValueNotifier<(Brightness, DsThemeMode)> notifier,
-    required super.child,
-  }) : super(notifier: notifier);
-
+class const _InheritedNotifier({
+  required super.notifier,
+  required super.child,
+}) extends InheritedNotifier<ValueNotifier<(Brightness, DsThemeMode)>> {
   @override
   ValueNotifier<(Brightness, DsThemeMode)> get notifier => super.notifier!;
 }

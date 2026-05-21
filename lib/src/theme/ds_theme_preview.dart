@@ -4,15 +4,11 @@ import 'package:ds_well/ds_well.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
 
-final class DsThemePreview extends Preview {
-  const DsThemePreview({
-    required super.group,
-    super.name,
-    this.mode,
-  }) : super();
-
-  final DsThemeMode? mode;
-
+final class const DsThemePreview({
+  required super.group,
+  super.name,
+  final DsThemeMode? mode,
+}) extends Preview {
   static const minWidth = 195.0;
 
   @override
@@ -93,9 +89,7 @@ DsTheme _changeTextTheme({bool darkRed = false}) {
   );
 }
 
-final class DsThemePreviewMulti extends MultiPreview {
-  const DsThemePreviewMulti() : super();
-
+final class const DsThemePreviewMulti() extends MultiPreview {
   @override
   List<Preview> get previews => [
     DsThemePreview(group: 'DsThemePreview'),

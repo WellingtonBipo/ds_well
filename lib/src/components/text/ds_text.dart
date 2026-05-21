@@ -7,7 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:utils_well/utils_well.dart';
 
 class DsText extends StatelessWidget {
-  const DsText(
+  const new(
     String this.data, {
     this.softWrap,
     TextOverflow? overflow,
@@ -22,7 +22,7 @@ class DsText extends StatelessWidget {
            overflow ?? ((softWrap ?? false) ? TextOverflow.ellipsis : null),
        childrenData = null;
 
-  const DsText.rich({
+  const new rich({
     required List<DsText> children,
     this.softWrap,
     TextOverflow? overflow,

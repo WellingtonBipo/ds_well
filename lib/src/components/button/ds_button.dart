@@ -6,7 +6,7 @@ import 'package:flutter/material.dart' show CircularProgressIndicator;
 import 'package:flutter/widgets.dart';
 
 class DsButton extends StatefulWidget {
-  const DsButton({
+  const new({
     required this.text,
     required this.type,
     this.onTap,
@@ -18,7 +18,7 @@ class DsButton extends StatefulWidget {
     super.key,
   }) : state = state ?? _kState;
 
-  const DsButton.text({
+  const new text({
     required this.text,
     this.onTap,
     this.padding,
@@ -30,7 +30,7 @@ class DsButton extends StatefulWidget {
        leading = null,
        state = state ?? _kState;
 
-  const DsButton.filled({
+  const new filled({
     required this.text,
     this.onTap,
     this.padding,
@@ -42,7 +42,7 @@ class DsButton extends StatefulWidget {
   }) : type = .filled,
        state = state ?? _kState;
 
-  const DsButton.outlined({
+  const new outlined({
     required this.text,
     this.onTap,
     this.padding,

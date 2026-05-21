@@ -19,9 +19,10 @@ import 'package:utils_well/utils_well.dart';
 /// | Helper        | Footnote     | 13 pt    | Aux. information  |
 /// | Helper        | Caption 1    | 12 pt    | Labels / notes    |
 /// | Helper        | Caption 2    | 11 pt    | Very small text   |
-final class DsTextStyle {
-  const DsTextStyle(this.fontSize, this.fontWeight);
-
+final class const DsTextStyle(
+  final double fontSize,
+  final FontWeight fontWeight,
+) {
   static const title1 = DsTextStyle(24, .w600);
   static const title2 = DsTextStyle(20, .w600);
   static const title3 = DsTextStyle(18, .w600);
@@ -34,9 +35,6 @@ final class DsTextStyle {
   static const footnote = DsTextStyle(12, .w400);
   static const caption1 = DsTextStyle(11, .w400);
   static const caption2 = DsTextStyle(10, .w400);
-
-  final double fontSize;
-  final FontWeight fontWeight;
 
   Size textWidgetSize(
     BuildContext context, {

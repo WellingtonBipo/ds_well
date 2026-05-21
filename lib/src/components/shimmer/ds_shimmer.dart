@@ -4,8 +4,8 @@ import 'package:ds_well/src/theme/ds_theme_preview.dart';
 import 'package:flutter/widgets.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-sealed class DsShimmer extends Widget {
-  const factory DsShimmer({
+sealed class DsShimmer implements Widget {
+  const factory({
     required Widget child,
     bool enabled,
     Key? key,
@@ -13,53 +13,38 @@ sealed class DsShimmer extends Widget {
 
   /// Creates a widget that keeps paints the original child as is when
   /// [DsShimmer] enabled is true
-  const factory DsShimmer.keep({
+  const factory keep({
     required Widget child,
     Key? key,
   }) = _DsShimmerKeep;
 
-  const factory DsShimmer.leaf({
+  const factory leaf({
     required Widget child,
     Key? key,
   }) = _DsShimmerLeaf;
 }
 
-// ignore: avoid_implementing_value_types
-class _DsShimmerKeep extends StatelessWidget implements DsShimmer {
-  const _DsShimmerKeep({
-    required this.child,
-    super.key,
-  });
-
-  final Widget child;
-
+class const _DsShimmerKeep({
+  required final Widget child,
+  super.key,
+}) extends StatelessWidget implements DsShimmer {
   @override
   Widget build(BuildContext context) => Skeleton.keep(child: child);
 }
 
-// ignore: avoid_implementing_value_types
-class _DsShimmerLeaf extends StatelessWidget implements DsShimmer {
-  const _DsShimmerLeaf({
-    required this.child,
-    super.key,
-  });
-
-  final Widget child;
-
+class const _DsShimmerLeaf({
+  required final Widget child,
+  super.key,
+}) extends StatelessWidget implements DsShimmer {
   @override
   Widget build(BuildContext context) => Skeleton.leaf(child: child);
 }
 
-// ignore: avoid_implementing_value_types
-class _DsShimmer extends StatefulWidget implements DsShimmer {
-  const _DsShimmer({
-    required this.child,
-    this.enabled = true,
-    super.key,
-  });
-  final Widget child;
-  final bool enabled;
-
+class const _DsShimmer({
+  required final Widget child,
+  final bool enabled = true,
+  super.key,
+}) extends StatefulWidget implements DsShimmer {
   @override
   State<_DsShimmer> createState() => _DsShimmerState();
 }
@@ -85,9 +70,7 @@ class _DsShimmerState extends State<_DsShimmer> {
   Widget build(BuildContext context) => const _Skeletonizer();
 }
 
-class _Skeletonizer extends StatefulWidget {
-  const _Skeletonizer();
-
+class const _Skeletonizer() extends StatefulWidget {
   @override
   State<_Skeletonizer> createState() => _SkeletonizerState();
 }
@@ -100,8 +83,8 @@ class _SkeletonizerState extends State<_Skeletonizer> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     final shimmerColor = switch (DsTheme.of(context).brightness) {
-      .dark => Color(0xFF444444),
-      .light => Color(0xFFDDDDDD),
+      .dark => Color.fromARGB(255, 68, 68, 68),
+      .light => Color.fromARGB(255, 221, 221, 221),
     };
     if (shimmerColor != _shimmerColor) {
       _shimmerColor = shimmerColor;

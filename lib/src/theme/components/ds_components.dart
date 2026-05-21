@@ -3,25 +3,15 @@ import 'dart:ui';
 import 'package:ds_well/src/theme/components/ds_text_theme.dart';
 import 'package:ds_well/src/theme/components/ds_button_theme.dart';
 
-class DsThemeComponents {
-  const DsThemeComponents({
-    this.text = const DsTextTheme(),
-    this.button = const DsButtonTheme(),
-  });
+class const DsThemeComponents({
+  final DsTextTheme text = const DsTextTheme(),
+  final DsButtonTheme button = const DsButtonTheme(),
+});
 
-  final DsTextTheme text;
-  final DsButtonTheme button;
-}
-
-class DsThemeComponentsEffective {
-  DsThemeComponentsEffective({
-    required this.text,
-    required this.button,
-  });
-
-  final DsTextThemeEffective text;
-  final DsButtonThemeEffective button;
-
+class const DsThemeComponentsEffective({
+  required final DsTextThemeEffective text,
+  required final DsButtonThemeEffective button,
+}) {
   static DsThemeComponentsEffective defaults(
     ({Color brand1, Color? brand2, Brightness brightness}) configs,
   ) => {
