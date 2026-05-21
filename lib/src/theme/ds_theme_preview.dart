@@ -6,7 +6,7 @@ import 'package:flutter/widget_previews.dart';
 
 final class DsThemePreview extends Preview {
   const DsThemePreview({
-    super.group,
+    required super.group,
     super.name,
     this.mode,
   }) : super();
@@ -27,7 +27,6 @@ final class DsThemePreview extends Preview {
     final t = super.transform();
     final b = t.toBuilder();
     b.wrapper = _wrapper;
-    // b.wrapper = (c) => Text('data');
     return b.build();
   }
 

@@ -12,12 +12,19 @@ part 'ds_theme_widget.dart';
 
 class DsTheme {
   const DsTheme({
+    Color? brand1,
+    this.brand2,
     this.background,
     this.components,
-  });
+  }) : brand1 = brand1 ?? brand1K;
+
+  final Color brand1;
+  final Color? brand2;
 
   final ColorGrades? background;
   final DsThemeComponents? components;
+
+  static const brand1K = Color.fromARGB(255, 0, 87, 157);
 
   static void setAppearance({
     required BuildContext context,
@@ -49,30 +56,30 @@ class DsTheme {
   }
 }
 
-class DsThemeEffective extends DsTheme {
+class DsThemeEffective {
   DsThemeEffective({
     this.brightness = .light,
     this.isSystemMode = false,
+    this.brand1 = DsTheme.brand1K,
+    this.brand2,
     ColorGradesEffective? background,
     DsThemeComponentsEffective? components,
-  }) : super(
-         background: background ?? kBackground[brightness]!,
-         components:
-             components ?? DsThemeComponentsEffective.defaults[brightness]!,
-       );
+  }) {
+    final configs = (brightness: brightness, brand1: brand1, brand2: brand2);
+    this.background = background ?? DsThemeEffective.backgroundK[brightness]!;
+    this.components =
+        components ?? DsThemeComponentsEffective.defaults(configs);
+  }
 
-  final bool isSystemMode;
   final Brightness brightness;
+  final bool isSystemMode;
 
-  @override
-  ColorGradesEffective get background =>
-      super.background as ColorGradesEffective;
+  final Color brand1;
+  final Color? brand2;
+  late final ColorGradesEffective background;
+  late final DsThemeComponentsEffective components;
 
-  @override
-  DsThemeComponentsEffective get components =>
-      super.components as DsThemeComponentsEffective;
-
-  static final kBackground = {
+  static final backgroundK = {
     Brightness.light: ColorGradesEffective(
       primary: Color.fromARGB(255, 255, 255, 255),
       secondary: Color.fromARGB(255, 226, 226, 226),
@@ -106,23 +113,23 @@ class DsThemeEffective extends DsTheme {
     components: components.mergeWith(brightness, other?.components),
   );
 
-  static DsThemeEffective merge(
-    Brightness brightness,
-    bool isSystemMode,
-    DsTheme? theme,
-    DsTheme? theme2,
-  ) {
-    return DsThemeEffective(
-      brightness: brightness,
-      isSystemMode: isSystemMode,
-      background: kBackground[brightness]!
-          .mergeWith(brightness, theme?.background)
-          .mergeWith(brightness, theme2?.background),
-      components: DsThemeComponentsEffective.defaults[brightness]!
-          .mergeWith(brightness, theme?.components)
-          .mergeWith(brightness, theme2?.components),
-    );
-  }
+  // static DsThemeEffective merge(
+  //   Brightness brightness,
+  //   bool isSystemMode,
+  //   DsTheme? theme,
+  //   DsTheme? theme2,
+  // ) {
+  //   return DsThemeEffective(
+  //     brightness: brightness,
+  //     isSystemMode: isSystemMode,
+  //     background: kBackground[brightness]!
+  //         .mergeWith(brightness, theme?.background)
+  //         .mergeWith(brightness, theme2?.background),
+  //     components: DsThemeComponentsEffective.defaults[brightness]!
+  //         .mergeWith(brightness, theme?.components)
+  //         .mergeWith(brightness, theme2?.components),
+  //   );
+  // }
 }
 
 class DsThemeColors {

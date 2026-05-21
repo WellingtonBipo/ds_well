@@ -111,4 +111,19 @@ enum DsTextState { normal, loading }
 
 @DsThemePreview(group: 'DsText')
 WidgetBuilder dsTextPreview() =>
-    (context) => DsText('Text', style: .title1);
+    (context) => SizedBox(
+      width: 200,
+      child: Column(
+        children: [
+          DsText('Text', style: .title1),
+          DsText('Text', style: .title1, state: .loading),
+          DsText(
+            List.generate(10, (i) => 'a' * (i + 1)).join(' '),
+            style: .title1,
+            overflow: .ellipsis,
+            maxLines: 2,
+            textAlign: .right,
+          ),
+        ],
+      ),
+    );

@@ -26,9 +26,6 @@ class DsThemeWidgetState extends State<DsThemeWidget> {
 
   late DsThemeEffective _theme;
 
-  // late DsThemeMode _mode;
-  // Brightness? _brightness;
-
   @override
   void initState() {
     super.initState();
