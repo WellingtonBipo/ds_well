@@ -81,24 +81,23 @@ class const DsButtonThemeEffective({
     );
   }
 
-  DsButtonThemeEffective mergeWith(
-    Brightness brightness,
-    DsButtonTheme? other,
-  ) => DsButtonThemeEffective(
-    text: other?.text ?? text,
-    textDisabled: other?.textDisabled ?? textDisabled,
-    textDanger: other?.textDanger ?? textDanger,
-    textDangerDisabled: other?.textDangerDisabled ?? textDangerDisabled,
-    filledText: other?.filledText ?? filledText,
-    filled: other?.filled ?? filled,
-    filledDisabled: other?.filledDisabled ?? filledDisabled,
-    filledDanger: other?.filledDanger ?? filledDanger,
-    filledDangerDisabled: other?.filledDangerDisabled ?? filledDangerDisabled,
-    outlined: other?.outlined ?? outlined,
-    outlinedDisabled: other?.outlinedDisabled ?? outlinedDisabled,
-    outlinedDanger: other?.outlinedDanger ?? outlinedDanger,
-    outlinedDangerDisabled:
-        other?.outlinedDangerDisabled ?? outlinedDangerDisabled,
-    loading: other?.loading ?? loading,
-  );
+  DsButtonThemeEffective mergeWith(DsButtonTheme? other) =>
+      DsButtonThemeEffective(
+        text: other?.text ?? text,
+        textDisabled: other?.textDisabled ?? textDisabled,
+        textDanger: other?.textDanger ?? textDanger,
+        textDangerDisabled: other?.textDangerDisabled ?? textDangerDisabled,
+        filledText: other?.filledText ?? filledText,
+        filled: other?.filled ?? filled,
+        filledDisabled: other?.filledDisabled ?? filledDisabled,
+        filledDanger: other?.filledDanger ?? filledDanger,
+        filledDangerDisabled:
+            other?.filledDangerDisabled ?? filledDangerDisabled,
+        outlined: other?.outlined ?? outlined,
+        outlinedDisabled: other?.outlinedDisabled ?? outlinedDisabled,
+        outlinedDanger: other?.outlinedDanger ?? outlinedDanger,
+        outlinedDangerDisabled:
+            other?.outlinedDangerDisabled ?? outlinedDangerDisabled,
+        loading: other?.loading ?? loading,
+      );
 }

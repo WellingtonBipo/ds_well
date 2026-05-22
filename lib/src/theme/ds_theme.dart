@@ -57,16 +57,16 @@ class DsThemeEffective({
   ColorGradesEffective? background,
   DsThemeComponentsEffective? components,
 }) {
+  this {
+    final configs = (brand1: brand1, brand2: brand2, brightness: brightness);
+    this.components =
+        components ?? DsThemeComponentsEffective.defaults(configs);
+  }
+
   final ColorGradesEffective background =
       background ?? DsThemeEffective.backgroundK[brightness]!;
 
-  final DsThemeComponentsEffective components =
-      components ??
-      DsThemeComponentsEffective.defaults((
-        brightness: brightness,
-        brand1: brand1,
-        brand2: brand2,
-      ));
+  late final DsThemeComponentsEffective components;
 
   static final backgroundK = {
     Brightness.light: ColorGradesEffective(
